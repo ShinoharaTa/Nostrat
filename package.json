@@ -1,6 +1,6 @@
 {
-  "name": "nostx",
-  "version": "0.2.1",
+  "name": "nostrat",
+  "version": "0.1.1",
   "type": "module",
   "private": true,
   "scripts": {
