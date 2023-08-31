@@ -1,0 +1,23 @@
+{
+  "name": "mattn",
+  "username": "mattn",
+  "display_name": "mattn",
+  "displayName": "mattn",
+  "picture": "https://void.cat/d/7hreyJ9qar2qxwUGBRgnax.webp",
+  "banner": "https://pbs.twimg.com/profile_banners/3180341/1398600741/1500x500",
+  "website": "https://compile-error.net",
+  "about": "Long-time #Golang user&contributor,  #GoogleDevExpert  Go, #Vim, #Windows hacker, #GitHubStars, #runner.",
+  "lud16": "grimyend76@walletofsatoshi.com",
+  "identities": [
+    {
+      "type": "github",
+      "claim": "mattn",
+      "proof": "https://github.com/mattn"
+    }
+  ],
+  "lud06": "grimyend76@walletofsatoshi.com",
+  "activitypub": "disabled",
+  "github:mattn": "13ec5d5e1c77d12d8546b99b64c3d372",
+  "nip05": "_@compile-error.net",
+  "nip05valid": true
+}
