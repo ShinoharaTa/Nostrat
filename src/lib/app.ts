@@ -65,22 +65,37 @@ export const createProfile = async (profile: any, pvKey: string) => {
 };
 
 export const sendToRelayList = async (pvKey: string) => {
-  const post = (kind: number) => {
-    const ev = {
-      kind: kind,
-      content: "",
-      tags: [
-        ["r", "wss://relay-jp.nostr.wirednet.jp"],
-        ["r", "wss://yabu.me"],
-        ["r", "wss://nostr.holybea.com"],
-        ["r", "wss://nrelay-jp.c-stellar.net"],
-        ["r", "wss://r.kojira.io"],
-        ["r", "wss://relay-jp.shino3.net"],
-        ["r", "wss://nostr-relay.nokotaro.com"],
-        ["r", "wss://relay.nostr.wirednet.jp"],
-      ],
-      created_at: currUnixtime(),
-    };
+  const kind10002 = {
+    kind: Kind.RelayList,
+    content: "",
+    tags: [
+      ["r", "wss://relay-jp.nostr.wirednet.jp"],
+      ["r", "wss://yabu.me"],
+      ["r", "wss://nostr.holybea.com"],
+      ["r", "wss://nrelay-jp.c-stellar.net"],
+      ["r", "wss://r.kojira.io"],
+      ["r", "wss://relay-jp.shino3.net"],
+      ["r", "wss://nostr-relay.nokotaro.com"],
+      ["r", "wss://relay.nostr.wirednet.jp"],
+    ],
+    created_at: currUnixtime(),
+  };
+  const kind3 = {
+    kind: Kind.Contacts,
+    content: JSON.stringify({
+      "wss://yabu.me/": { read: true, write: true },
+      "wss://nostr.holybea.com/": { read: true, write: true },
+      "wss://nrelay-jp.c-stellar.net/": { read: true, write: true },
+      "wss://relay-jp.shino3.net/": { read: true, write: true },
+      "wss://r.kojira.io/": { read: true, write: true },
+      "wss://nostr-relay.nokotaro.com/": { read: true, write: true },
+      "wss://relay.nostr.wirednet.jp/": { read: true, write: true },
+      "wss://relay-jp.nostr.wirednet.jp/": { read: true, write: true },
+    }),
+    tags:[],
+    created_at: currUnixtime(),
+  };
+  const post = (ev:any) => {
     const post = finishEvent(ev, pvKey);
     const okList: string[] = [];
     const pub = pool.publish(relayList, post);
@@ -88,9 +103,9 @@ export const sendToRelayList = async (pvKey: string) => {
       okList.push(relay);
       console.log(relay);
     });
-  }
-  post(Kind.RelayList)
-  post(Kind.Contacts);
+  };
+  post(kind10002);
+  post(kind3);
 };
 
 export const relayList = [
